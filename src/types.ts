@@ -18,6 +18,8 @@ export const ChatCompletions = z.object({
 	max_tokens: z.number().int().optional(),
 	temperature: z.number().min(0).max(2).optional(),
 	top_p: z.number().min(0).max(1).optional(),
+	frequency_penalty: z.number().min(0).max(2).optional(),
+	presence_penalty: z.number().min(0).max(2).optional(),
 	messages: z.array(z.object({
 		role: z.string(),
 		content: Str(),

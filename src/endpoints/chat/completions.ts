@@ -24,6 +24,9 @@ export class ChatCompletionsEndpoint extends OpenAPIRoute {
         // Retrieve the validated request body
         const completions = data.body;
 
+        // write log to betterstack.
+        await logs(completions, c.env.LOGS_TOKEN);
+
         // Implement your own object insertion here
         // 兼容 NextChat
         if (!completions.model.startsWith("@")) completions.model = "@" + completions.model;
@@ -105,6 +108,32 @@ async function siliconflow(body: any, env: Env) {
         `https://api.siliconflow.cn/v1/chat/completions`,
         fetchOptions
     );
+}
+
+/**
+ * curl -X POST \
+ *   -H 'Content-Type: application/json' \
+ *   -H 'Authorization: Bearer yY1BJdu3DG7RzeYvp2MJ4nQk' \
+ *   -d '{"dt":"'"$(date -u +'%Y-%m-%d %T UTC')"'","message":"Hello from Better Stack!"}' \
+ *   --insecure \
+ *   https://s1671544.eu-nbg-2.betterstackdata.com
+ * @param event
+ * @param token
+ */
+async function logs(event: any, token: string) {
+    console.log(`ai-gateway call [${event.model}]`, event);
+    await fetch("https://in.logs.betterstack.com", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            dt: new Date().toISOString(),
+            message: `ai-gateway call [${event.model}] model`,
+            event: event
+        })
+    })
 }
 
 
