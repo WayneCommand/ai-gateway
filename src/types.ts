@@ -11,3 +11,11 @@ export const Task = z.object({
 	completed: z.boolean().default(false),
 	due_date: DateTime(),
 });
+
+export const ChatCompletions = z.object({
+	model: z.string(),
+	stream: z.boolean().optional(),
+	max_tokens: z.number().int().positive().optional(),
+	temperature: z.number().min(0).max(2).optional(),
+	top_p: z.number().min(0).max(1).optional(),
+});
