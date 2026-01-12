@@ -25,7 +25,7 @@ e.g:
 ### chat completions
 
 ```shell
-curl --location 'http://localhost:8000/v1/chat/completions' \
+curl --location 'http://localhost:8787/v1/chat/completions' \
 --header 'Content-Type: application/json' \
 --data '{ 
   "messages": [ 
@@ -34,6 +34,7 @@ curl --location 'http://localhost:8000/v1/chat/completions' \
   ], 
   "temperature": 0.7, 
   "max_tokens": 2048,
+  "model": "gh/openai/gpt-4o",
   "stream": true
 }'
 ```
