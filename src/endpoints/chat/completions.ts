@@ -57,8 +57,6 @@ export class ChatCompletionsEndpoint extends OpenAPIRoute {
             }
         }
 
-
-
         return Response.json({
             success: false,
             error: "Model not found"
@@ -110,10 +108,11 @@ async function siliconflow(body: any, env: Env) {
 }
 
 
-function buildRequestOptions(content: any, token: string) {
+function buildRequestOptions(body: any, token: string) {
+    console.debug("content: ", body);
     return {
         method: 'POST',
-        body: JSON.stringify(content),
+        body: JSON.stringify(body),
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': `application/json`

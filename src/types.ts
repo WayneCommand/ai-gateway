@@ -15,7 +15,11 @@ export const Task = z.object({
 export const ChatCompletions = z.object({
 	model: z.string(),
 	stream: z.boolean().optional(),
-	max_tokens: z.number().int().positive().optional(),
+	max_tokens: z.number().int().optional(),
 	temperature: z.number().min(0).max(2).optional(),
 	top_p: z.number().min(0).max(1).optional(),
+	messages: z.array(z.object({
+		role: z.string(),
+		content: Str(),
+	})),
 });
