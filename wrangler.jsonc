@@ -7,6 +7,9 @@
 	"name": "ai-gateway",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-09-27",
+	"compatibility_flags": [
+		"nodejs_compat_v2"
+	],
 	"observability": {
 		"enabled": true
 	},
