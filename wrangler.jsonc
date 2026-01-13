@@ -32,7 +32,8 @@
 		 "SILICONFLOW_API_KEY": "",
 		 "CLOUDFLARE_ACCOUNT_ID": "",
 		 "CLOUDFLARE_API_KEY": "",
-		 "LOGS_TOKEN": ""
+		 "LOGS_TOKEN": "",
+		 "CLIENT_KEY": ""
 	 }
 	/**
 	 * Static Assets
